@@ -3,16 +3,15 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		2080DAE5FFAC805C9A619ADC /* Pods_Blue_Book_Blue_BookUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED9010394244F196C92B7456 /* Pods_Blue_Book_Blue_BookUITests.framework */; };
 		399497BD45B38EC439425597 /* Pods_Blue_BookTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FBB593FB4D4720988FD8B4E /* Pods_Blue_BookTests.framework */; };
 		B8E8D927D49E0AFAE114C881 /* Pods_Blue_Book.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CC104587FEE7EEFDBFB3165 /* Pods_Blue_Book.framework */; };
-		D5657AEA2403228900577AAD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D5657AE92403228900577AAD /* GoogleService-Info.plist */; };
-		D5657AEB2403228900577AAD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D5657AE92403228900577AAD /* GoogleService-Info.plist */; };
-		D5657AEC2403228900577AAD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D5657AE92403228900577AAD /* GoogleService-Info.plist */; };
+		D59DB2A9244410FC00BEFF64 /* RootModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D59DB2A8244410FC00BEFF64 /* RootModel.swift */; };
+		D59DB2AB2444123900BEFF64 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D59DB2AA2444123900BEFF64 /* GoogleService-Info.plist */; };
 		D5D5023B23FDFDB700C73DB1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D5023A23FDFDB700C73DB1 /* AppDelegate.swift */; };
 		D5D5023D23FDFDB700C73DB1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D5023C23FDFDB700C73DB1 /* SceneDelegate.swift */; };
 		D5D5023F23FDFDB700C73DB1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D5023E23FDFDB700C73DB1 /* ContentView.swift */; };
@@ -53,7 +52,8 @@
 		8832EFF8A43E87694E5E7149 /* Pods-Blue BookTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Blue BookTests.debug.xcconfig"; path = "Target Support Files/Pods-Blue BookTests/Pods-Blue BookTests.debug.xcconfig"; sourceTree = "<group>"; };
 		9FBB593FB4D4720988FD8B4E /* Pods_Blue_BookTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Blue_BookTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D19AD0B8FCC63C5871A26887 /* Pods-Blue Book-Blue BookUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Blue Book-Blue BookUITests.release.xcconfig"; path = "Target Support Files/Pods-Blue Book-Blue BookUITests/Pods-Blue Book-Blue BookUITests.release.xcconfig"; sourceTree = "<group>"; };
-		D5657AE92403228900577AAD /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		D59DB2A8244410FC00BEFF64 /* RootModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootModel.swift; sourceTree = "<group>"; };
+		D59DB2AA2444123900BEFF64 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D5D5023723FDFDB700C73DB1 /* Blue Book.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Blue Book.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5D5023A23FDFDB700C73DB1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D5D5023C23FDFDB700C73DB1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -113,7 +113,6 @@
 				8832EFF8A43E87694E5E7149 /* Pods-Blue BookTests.debug.xcconfig */,
 				3340172466D73B74A647BBB0 /* Pods-Blue BookTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -152,6 +151,7 @@
 		D5D5023923FDFDB700C73DB1 /* Blue Book */ = {
 			isa = PBXGroup;
 			children = (
+				D59DB2AA2444123900BEFF64 /* GoogleService-Info.plist */,
 				D5D5026A23FE06C700C73DB1 /* Model */,
 				D5D5023A23FDFDB700C73DB1 /* AppDelegate.swift */,
 				D5D5023C23FDFDB700C73DB1 /* SceneDelegate.swift */,
@@ -159,7 +159,6 @@
 				D5D5024023FDFDBC00C73DB1 /* Assets.xcassets */,
 				D5D5024523FDFDBC00C73DB1 /* LaunchScreen.storyboard */,
 				D5D5024823FDFDBC00C73DB1 /* Info.plist */,
-				D5657AE92403228900577AAD /* GoogleService-Info.plist */,
 				D5D5024223FDFDBC00C73DB1 /* Preview Content */,
 			);
 			path = "Blue Book";
@@ -194,6 +193,7 @@
 		D5D5026A23FE06C700C73DB1 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				D59DB2A8244410FC00BEFF64 /* RootModel.swift */,
 				D5D5026B23FE080C00C73DB1 /* QuestionandAnswer.swift */,
 				D5D5026F23FE436C00C73DB1 /* Level.swift */,
 			);
@@ -310,7 +310,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D5D5024723FDFDBC00C73DB1 /* LaunchScreen.storyboard in Resources */,
-				D5657AEA2403228900577AAD /* GoogleService-Info.plist in Resources */,
+				D59DB2AB2444123900BEFF64 /* GoogleService-Info.plist in Resources */,
 				D5D5024423FDFDBC00C73DB1 /* Preview Assets.xcassets in Resources */,
 				D5D5024123FDFDBC00C73DB1 /* Assets.xcassets in Resources */,
 			);
@@ -320,7 +320,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D5657AEB2403228900577AAD /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -328,7 +327,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D5657AEC2403228900577AAD /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -445,6 +443,7 @@
 				D5D5023B23FDFDB700C73DB1 /* AppDelegate.swift in Sources */,
 				D5D5026C23FE080C00C73DB1 /* QuestionandAnswer.swift in Sources */,
 				D5D5023D23FDFDB700C73DB1 /* SceneDelegate.swift in Sources */,
+				D59DB2A9244410FC00BEFF64 /* RootModel.swift in Sources */,
 				D5D5027023FE436C00C73DB1 /* Level.swift in Sources */,
 				D5D5023F23FDFDB700C73DB1 /* ContentView.swift in Sources */,
 			);
