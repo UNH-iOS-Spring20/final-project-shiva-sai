@@ -10,11 +10,7 @@ import SwiftUI
 import Firebase
 struct ContentView: View {
     var body: some View {
-        QReference().callUrl(urlStr: "https://opentdb.com/api.php?amount=6&category=0&difficulty=easy&type=boolean") { (data) in
-            print(data)
-        }
-        return Text("Hello, World!")
-
+        Text("I am happy")
     }
 }
 
