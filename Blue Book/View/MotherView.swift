@@ -6,24 +6,41 @@
 //  Copyright © 2020 Shiva Kommareddy. All rights reserved.
 //
 
+
 import SwiftUI
 
 struct MotherView: View {
     @ObservedObject var viewRouter: ViewRouter    // The classic conceot of binding
+    @EnvironmentObject var util: Util
            
            var body: some View {
                VStack{
-                   if  viewRouter.currentPage == "page1"{
-                    Login(viewRouter: viewRouter, Cobject: Controller())
+                   if viewRouter.currentPage == "page1"{
+                    Login(viewRouter: viewRouter)
                    }
-                   else if viewRouter.currentPage == "page2"{
-                    Signup(viewRouter: viewRouter, Cobject: Controller())
-                   }
-                   else if viewRouter.currentPage == "page3"{
-                    HomepageView(viewRouter: viewRouter, Cobject: Controller())
-                 }
-                   else if viewRouter.currentPage == "page4"{
-                    EntertainmentView(viewRouter: viewRouter)
+                  if viewRouter.currentPage == "page2"{
+                    Signup(viewRouter: viewRouter)
+                    }
+                    if viewRouter.currentPage == "page3"{
+                    NavView(viewRouter: viewRouter)
+                    }
+                     if viewRouter.currentPage == "page4"{
+                    DifficultyView(viewRouter: viewRouter)
+                    }
+                    if viewRouter.currentPage == "page5"{
+                    ContentView(viewRouter: viewRouter)
+                    }
+                    if viewRouter.currentPage == "page6"{
+                    LocalNotificationView(viewRouter: viewRouter)
+                    }
+                   if viewRouter.currentPage == "page7" {
+                    HomepageView(viewRouter: viewRouter)
+                    }
+                   if viewRouter.currentPage == "page8" {
+                    settingsView(viewRouter: viewRouter)
+                }
+                    if viewRouter.currentPage == "page9" {
+                    AddQuestion(viewRouter: viewRouter)
                 }
             }
            }
@@ -31,6 +48,7 @@ struct MotherView: View {
 
 struct MotherView_Previews: PreviewProvider {
     static var previews: some View {
-        MotherView(viewRouter: ViewRouter())
+        MotherView(viewRouter: ViewRouter()).environmentObject(Util())
     }
 }
+

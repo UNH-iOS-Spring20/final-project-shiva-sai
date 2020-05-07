@@ -15,6 +15,7 @@ class QuestionandAnswer{
         self.question = question
         self.answer = answer
         
+        
     }
     
 }

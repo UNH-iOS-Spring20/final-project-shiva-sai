@@ -16,9 +16,9 @@ class FirebaseSession: ObservableObject{
     
     let db = Firestore.firestore()
     init(){
-        performLogin()
+      //  performLogin()
     }
-    func performLogin(){
+/*  func performLogin(){
         db.collection("User").addSnapshotListener{ QuerySnapshot, error in
             guard let snapshot  = QuerySnapshot else{
                print("Error in fetching snapshot \(error!)")
@@ -35,7 +35,7 @@ class FirebaseSession: ObservableObject{
                 
             }
         }
-         }
+         }*/
     
 }
 

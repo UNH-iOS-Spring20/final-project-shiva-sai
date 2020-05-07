@@ -7,10 +7,12 @@
 //
 
 import SwiftUI
+import FirebaseFirestore
+
+let collref = Firestore.firestore().collection("User")
 
 struct Signup: View {
     @ObservedObject var viewRouter: ViewRouter
-    @ObservedObject var Cobject: Controller
     @State var email: String = ""
     @State var password: String = ""
     @State var firstname: String = ""
@@ -33,7 +35,7 @@ struct Signup: View {
                SecureField("Password", text: $password).padding(12).frame(width:370).border(Color.blue).padding(EdgeInsets(top: 10, leading: 0, bottom: 0, trailing: 0))
                    .autocapitalization(.none)
                
-               Button(action: DoSignUp){
+            Button(action: doSignup){
                    HStack(alignment: .center){
                                       Spacer()
                                   Text("SIGN UP").foregroundColor(Color.black).bold()
@@ -50,21 +52,23 @@ struct Signup: View {
                           }.padding(EdgeInsets(top: 25, leading: 0, bottom: 0, trailing: 0))
            }
        }
-    func DoSignUp(){
+    func doSignup(){
         let email: String = $email.wrappedValue
         let password: String = $password.wrappedValue
         let firstname: String = $firstname.wrappedValue
         let lastname: String = $lastname.wrappedValue
         
-        Cobject.doSignup(email: email, password: password, firstname: firstname, lastname: lastname)
+        print("Sign up Clicked")
+        let data = ["firstname": firstname, "lastname": lastname, "email": email, "password": password] as [String: Any]
+        collref.addDocument(data: data)
     }
+  
 
 }
 
 
 struct Signup_Previews: PreviewProvider {
     static var previews: some View {
-        Signup(viewRouter: ViewRouter(), Cobject:
-            Controller())
+        Signup(viewRouter: ViewRouter())
     }
 }

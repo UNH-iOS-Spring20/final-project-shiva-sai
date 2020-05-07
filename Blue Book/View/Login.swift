@@ -9,12 +9,14 @@
 import SwiftUI
 import Firebase
 import UIKit
+import FirebaseFirestore
+
+let newUser = Firestore.firestore().collection("User")
 
 struct Login: View {
    let db = Firestore.firestore()
             @ObservedObject var viewRouter: ViewRouter
-            @ObservedObject var Cobject: Controller
-            @ObservedObject private var fbSession = firebaseSession
+            @ObservedObject private var users = FirebaseController<User>(collectionRef: newUser)
             @State var email: String = ""
             @State var password: String = ""
             var body: some View {
@@ -75,11 +77,12 @@ struct Login: View {
             }
             
             func submit(){
-                //I will do the job at any cost
+                // Values in the label
                 let email = $email.wrappedValue
                 let password = $password.wrappedValue
+                
                 var flag = true
-                for user in fbSession.completeusers{
+                for user in users.items{
                     print("Email is: \(user.email) and Password is: \(user.password)")
                     if(user.email == email && user.password == password){
                         print("Valid User")
@@ -106,6 +109,6 @@ struct Login: View {
 
 struct Login_Previews: PreviewProvider {
             static var previews: some View {
-                Login(viewRouter: ViewRouter(), Cobject: Controller())
+                Login(viewRouter: ViewRouter())
             }
         }

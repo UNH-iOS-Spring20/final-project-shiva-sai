@@ -5,7 +5,7 @@
 //  Created by Shiva Kommareddy on 4/13/20.
 //  Copyright © 2020 Shiva Kommareddy. All rights reserved.
 //
-
+/*
 import Foundation
 import Firebase
 
@@ -56,3 +56,4 @@ class Controller: ObservableObject{
     
     //----------------------------------------------------------------------
 }
+*/
