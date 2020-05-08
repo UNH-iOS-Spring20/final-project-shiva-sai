@@ -13,6 +13,7 @@ class Util: ObservableObject {
     var cat_type: String = ""
     var val: String = ""
     var topic: String = ""
+    var email: String = ""
     //var questions: [Questions] = []
     
 }

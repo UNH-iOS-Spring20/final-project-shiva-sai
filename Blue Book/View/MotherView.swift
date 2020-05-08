@@ -15,16 +15,16 @@ struct MotherView: View {
            
            var body: some View {
                VStack{
-                   if viewRouter.currentPage == "page1"{
+                    if viewRouter.currentPage == "page1"{
                     Login(viewRouter: viewRouter)
-                   }
-                  if viewRouter.currentPage == "page2"{
+                    }
+                    if viewRouter.currentPage == "page2"{
                     Signup(viewRouter: viewRouter)
                     }
                     if viewRouter.currentPage == "page3"{
                     NavView(viewRouter: viewRouter)
                     }
-                     if viewRouter.currentPage == "page4"{
+                    if viewRouter.currentPage == "page4"{
                     DifficultyView(viewRouter: viewRouter)
                     }
                     if viewRouter.currentPage == "page5"{
@@ -33,16 +33,19 @@ struct MotherView: View {
                     if viewRouter.currentPage == "page6"{
                     LocalNotificationView(viewRouter: viewRouter)
                     }
-                   if viewRouter.currentPage == "page7" {
+                    if viewRouter.currentPage == "page7" {
                     HomepageView(viewRouter: viewRouter)
                     }
-                   if viewRouter.currentPage == "page8" {
+                    if viewRouter.currentPage == "page8" {
                     settingsView(viewRouter: viewRouter)
-                }
+                    }
                     if viewRouter.currentPage == "page9" {
                     AddQuestion(viewRouter: viewRouter)
+                    }
+                    if viewRouter.currentPage == "page10" {
+                    ProfileView(viewRouter: viewRouter)
+                    }
                 }
-            }
            }
     }
 

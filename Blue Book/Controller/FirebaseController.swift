@@ -10,7 +10,6 @@ import FirebaseFirestore
 
 protocol FirebaseCodable: Identifiable, ObservableObject {
     init?(id: String, data: [String: Any])
-    
 }
 
 class FirebaseController<T: FirebaseCodable>: ObservableObject{
@@ -26,16 +25,16 @@ class FirebaseController<T: FirebaseCodable>: ObservableObject{
             guard let snapshot = snapshot else{
             print("Error fetching snapshot: \(error!)")
             return
+    }
+    let models = snapshot.documents.map{(document) -> T in
+        if let model = T(id: document.documentID, data: document.data()){
+            return model
         }
-            let models = snapshot.documents.map{(document) -> T in
-                if let model = T(id: document.documentID, data: document.data()){
-                    return model
-                }
-                else{
-                    fatalError("unable to initialize type \(T.self) with dictionary \(document.data())")
-                }
-                }
-            self.items = models
+        else{
+            fatalError("unable to initialize type \(T.self) with dictionary \(document.data())")
+        }
+    }
+    self.items = models
     }
 }
 }

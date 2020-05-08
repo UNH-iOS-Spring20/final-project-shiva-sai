@@ -11,29 +11,30 @@ import SwiftUI
 struct settingsView: View {
     @ObservedObject var viewRouter: ViewRouter
     var body: some View {
-        VStack(spacing: 10){
+        List{
+            Button(action: {self.BackMethod()}){
+            Text("<")
+            Spacer()
+            }
             Button(action:self.NotMethod){
                 Text("Notification settings").foregroundColor(Color.white).bold().italic()
                 Spacer()
             }.padding()
             Button(action:LogoutMethod){
                 Text("Logout").foregroundColor(Color.white).bold().italic()
-                           Spacer()
-                       }.padding()
-            
+                Spacer()
+            }.padding()
         }
     }
+    func BackMethod() {
+        self.viewRouter.currentPage = "page3"
+    }
     func NotMethod() {
-        print(1)
-      self.viewRouter.currentPage = "page6"
-        print(7)
+        self.viewRouter.currentPage = "page6"
     }
     func LogoutMethod() {
-        print(30)
     self.viewRouter.currentPage = "page1"
-        print(3)
     }
-    
 }
 
 struct settingsView_Previews: PreviewProvider {

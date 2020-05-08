@@ -19,83 +19,82 @@ struct ContentView: View {
     
     @ObservedObject var viewRouter: ViewRouter
     @EnvironmentObject var util: Util
+    @State private var showingAlert = false
     @State var length: Int = 0
     @State var index: Int = 0
     @State var btntxt: String = "Start"
     @State var displayScore: Bool = false;
+    @State var options: [String] = []
+    @State var score: Int = 0
+    @State var alert: String = ""
     @ObservedObject private var questions = FirebaseController<RootModel>(collectionRef: questionCollection2)
-    
     @State  var entertainment1: [RootModel] = []
-    
-   
-    
-  // Environment variable 1 = Entertainment/Sports/Science/History
-  // Environment variable 2 = Easy/Medium/Hard
-    
+
     var body: some View{
-        //print(env1) // Category
-        //print(env2) // Level
         print(self.util.cat_type)
         print(self.util.val)
-       
-      
-    
         return(
-            VStack{
+            VStack(alignment: .center,spacing: 100){
+                Button(action: {self.BackMethod()}){
+                Text("BACK")
+                Spacer()
+                }
                 if !displayScore {
-                if entertainment1.count > 0 {
+                    if entertainment1.count > 0  && options.count > 0{
                 List{
                 Text(entertainment1[index].question)
-               /* Button(
-                    action: {self.Correct(ans: self.questions.isEmpty ? "" : (entertainment1[index].correct_answer))}, label:{Text(questions.isEmpty ? "" : questions[index].incorrect_answers[0])}
-                       )*/
-
-                Text(entertainment1[index].correct_answer)
-            Text(entertainment1[index].incorrect_answers_1)
-                Text(entertainment1[index].incorrect_answers_2)
-                    Text(entertainment1[index].incorrect_answers_3)
+                    Button(
+                        action: {self.checkAns(ans: self.options[0])}, label:{Text(options[0])}
+                        ).alert(isPresented: $showingAlert){
+                            Alert(title: Text(self.alert),
+                              message: Text( ""), dismissButton: . default(Text("OK")))
+                        }
+                    
+                    Button(
+                        action: {self.checkAns(ans: self.options[1])}, label:{Text(options[1])}
+                      )
+                    Button(
+                        action: {self.checkAns(ans: self.options[2])}, label:{Text(options[2])}
+                      )
+                    Button(
+                      action: {self.checkAns(ans: self.options[3])}, label:{Text(options[3])}
+                    )
                     
                 }
-        
           Button(
-              action: {self.Next()}, label:{Text("Next Q")}
-          )
+              action: {self.Next()}, label:{Text("Next")}
+                )
+                    //Text(String(score))
             }
-                    
-                else{
-                    Button(
-                        action: {self.Next()}, label:{Text("Start")}
+            else{
+                Button(
+                action: {self.Next()}, label:{Text("Start")}
                     )
                 }
         }
                 else{
-                    Text("Score :")
+                    Text("Score :"+String(score))
                     Button(
-                                           action: {self.gotoNextLevel()}, label:{Text("Next level")}
-                                       )
-                    
-                }
-                
-                
-    }
+                    action: {self.gotoNextLevel()}, label:{Text("Next level")
+                        .alert(isPresented: $showingAlert){
+                            Alert(title: Text(self.alert),
+                              message: Text( ""), dismissButton: . default(Text("OK")))
+                        }
+                    }
+            )
+            }
+            }
         )
+        
     }
-   /* func Correct(ans: String){
-        
-           error = ""
-           print(ans)
-           //if ans == questions[index].correct_answer{
-           if ans == "A"{
-               score+=1
-           }
-           else{
-               error = "wrong answer"
-           }
-    */
+
+    func BackMethod() {
+        self.viewRouter.currentPage = "page3"
+    }
+    //Function to display Questions based on category and difficulty.
     func Next(){
-        
-      
         if entertainment1.count == 0 {
+            print("Index :"+String(index))
          for qa in questions.items{
              if(qa.category == util.cat_type && qa.difficulty == util.val){
                  entertainment1.append(qa)
@@ -103,18 +102,23 @@ struct ContentView: View {
            }
         }
         
-        
         if index < entertainment1.count-1{
+            print("Index :"+String(index))
+            
             index += 1
+            options = []
+            options.append(entertainment1[index].correct_answer)
+            options.append(entertainment1[index].incorrect_answers_1)
+            options.append(entertainment1[index].incorrect_answers_2)
+            options.append(entertainment1[index].incorrect_answers_3)
+            options.shuffle()
+            
         }
         else{
            displayScore = true
         }
-        
-                  
-                         
-                     }
-    
+    }
+    //Func to select next level from game screen.
     func  gotoNextLevel() {
         if(util.val == "Easy"){
             util.val = "Medium"
@@ -122,49 +126,47 @@ struct ContentView: View {
             entertainment1 = []
             index = 0
             btntxt = "Start"
+            self.showingAlert = false
+            Text( "Congratulations!! You Have Completed This Level" )
             self.viewRouter.currentPage = "page5"
             //self redirect
         }
-        else if(util    .val == "Medium"){
+        else if(util.val == "Medium"){
             util.val = "Hard"
+            displayScore = false
+                      entertainment1 = []
+                      index = 0
+                      btntxt = "Start"
+            Text( "Congratulations!! You Have Completed This Level" )
+            self.showingAlert = false
+                      self.viewRouter.currentPage = "page5"
             //self redirect
         }
+        else if(util.val == "Hard"){
+            Text( "Congratulations!! You Have Completed All Levels" )
+            displayScore = false
+            self.showingAlert = false
+            self.viewRouter.currentPage = "page7"
+        }
+    }
+    //Function to check answer validity.
+    func checkAns(ans: String){
+        if(entertainment1[index].correct_answer == ans){
+            //if answer is correct score value is increased by 10.
+            score += 10
+            //Display alert if right option is selected
+            alert = "Congratulations!!"
+        }
+        else{
+            alert = "Sorry!!"
+        }
+        
+       //Display alert if wrong answer is selected
+        self.showingAlert = true
+        self.Next()
+       // print(ans)
     }
 }
-
-
-// 1st Swift Page: Category.swift UI file
-//homepageview()
-/*
- Categories - :
- 1 display all categories
- 2 Use select any category, set environment variable
- 3 Navigate to level page
- */
-
-// 2nd Swift Page: Level.swift UI
-/*
- Difficultyview
- 1. set level, environment variable
- 2. user setects level, navigate to questions
- */
-
-/*
- // 3rd Class file
- levelroutermodel.swift
- Create a class called
- LevelandCategory:
- Fields:
- LEVEL: String
- CATEGORY: String
- */
-
-/*
- 4th Content View (Questions View)
- View all questions based on Category and Level
- */
-
-
 
     
 struct ContentView_Previews: PreviewProvider {
@@ -174,13 +176,3 @@ struct ContentView_Previews: PreviewProvider {
 }
 
 
-/*
- func Next(){
-               if(entertainment.count-1 == index){
-                   
-               }
-               print("I will call next function")
-               index+=1
-               
-           }
- */

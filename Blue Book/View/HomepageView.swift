@@ -16,52 +16,57 @@ struct HomepageView: View {
         @ObservedObject private var fbSession = firebaseSession
         @EnvironmentObject var Cat: Util
             var body: some View {
-                VStack{
-                     Button(action: {self.EntertainmentMethod()}) {
-                        Text("ENTERTAINMENT").foregroundColor(Color.black).bold()
+                List{
+                    Button(action: {self.BackMethod()}){
+                    Text("<")
+                    Spacer()
+                    }
+                    Button(action: {self.EntertainmentMethod()}) {
+                        Text("ENTERTAINMENT").foregroundColor(Color.white).bold()
                         Spacer()
-                        }.padding().background(Color.green).cornerRadius(1.0).frame(width: 200)
+                        }
                     Button(action: {
                         self.HistoryMethod()
                     }) {
-                        Text("HISTORY").foregroundColor(Color.black).bold()
+                        Text("HISTORY").foregroundColor(Color.white).bold()
                         Spacer()
-                    }.padding().background(Color.green).cornerRadius(1.0).frame(width: 200)
+                    }
                     Button(action: {
                     self.SportsMethod()
                     }) {
-                    Text("SPORTS").foregroundColor(Color.black).bold()
+                    Text("SPORTS").foregroundColor(Color.white).bold()
                     Spacer()
-                    }.padding().background(Color.blue).cornerRadius(1.0).frame(width: 200)
+                    }
                     Button(action: {
                     self.ScienceMethod()
                     }) {
-                        Text("SCIENCE").foregroundColor(Color.black).bold()
+                        Text("SCIENCE").foregroundColor(Color.white).bold()
                         Spacer()
-                    }.padding().background(Color.yellow).cornerRadius(1.0).frame(width: 200)
+                    }
+                }
         }
+    func BackMethod() {
+        self.viewRouter.currentPage = "page3"
     }
-func EntertainmentMethod() {
+    func EntertainmentMethod() {
     self.viewRouter.currentPage = "page4"
     self.Cat.cat_type = "Entertainment"
     
-}
-func HistoryMethod() {
-     self.viewRouter.currentPage = "page4"
-    self.Cat.cat_type = "History"
-    
     }
-func SportsMethod() {
-    self.viewRouter.currentPage = "page4"
-    self.Cat.cat_type = "Sports"
-    
+    func HistoryMethod() {
+        self.viewRouter.currentPage = "page4"
+        self.Cat.cat_type = "History"
     }
-func ScienceMethod() {
-    self.viewRouter.currentPage = "page4"
-    self.Cat.cat_type = "Science"
-    
+    func SportsMethod() {
+        self.viewRouter.currentPage = "page4"
+        self.Cat.cat_type = "Sports"
+    }
+    func ScienceMethod() {
+        self.viewRouter.currentPage = "page4"
+        self.Cat.cat_type = "Science"
     }
 }
+
 struct HomepageView_Previews: PreviewProvider {
     static var previews: some View {
         HomepageView(viewRouter: ViewRouter())

@@ -11,16 +11,14 @@ import Foundation
 class LevelRouteController: ObservableObject{
     
     @Published var levelRoute = Util()
+        func setLeveType(cat_type: String, val: String){
+            self.levelRoute.cat_type = cat_type
+            self.levelRoute.val = val
+        }
     
-    
-    func setLeveType(cat_type: String, val: String){
-        self.levelRoute.cat_type = cat_type
-        self.levelRoute.val = val
-    }
-    
-    func getLeveType() -> LevelRouteController {
-        var lr: LevelRouteController = LevelRouteController()
-        lr.levelRoute = self.levelRoute
-        return lr
+        func getLeveType() -> LevelRouteController {
+            var lr: LevelRouteController = LevelRouteController()
+            lr.levelRoute = self.levelRoute
+            return lr
     }
 }

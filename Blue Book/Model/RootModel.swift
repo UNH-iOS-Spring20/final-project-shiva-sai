@@ -51,34 +51,3 @@ class RootModel: FirebaseCodable {
     }
     
 }
- /*
-}
-
-struct MasterTable: Codable {
-    var response_code: Int = 2
-    var results: [Questions] = []
-}
-
-class QReference: NSObject {
-    public func callUrl(urlStr urlString: String, output: @escaping (_ data: MasterTable) -> Void){
-        let url = URL(string: urlString)
-       
-        let session = URLSession.shared
-        let dataTask = session.dataTask(with: url!) { (data, response, error) in
-            if error == nil && data != nil {
-                let decoder = JSONDecoder()
-                do{
-                   let table =  try decoder.decode(MasterTable.self, from: data!)
-                    output(table)
-                }catch {
-                    print("Errors")
-                    print("Error info: \(error)")
-                    
-                }
-                
-            }
-        }
-        dataTask.resume()
-    }
-}
-*/
