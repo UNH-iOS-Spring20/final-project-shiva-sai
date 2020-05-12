@@ -11,11 +11,11 @@ class RootModel: FirebaseCodable {
     var id: String
     @Published var category: String = "" // Eg: Entertainment, Histrory, Science, Sports
     @Published var difficulty: String = "" // Eg: Easy, medium
-    @Published var question: String = ""
-    @Published var correct_answer: String = ""
-    @Published var incorrect_answers_1 : String = ""
-    @Published var incorrect_answers_2 : String = ""
-    @Published var incorrect_answers_3 : String = ""
+    @Published var question: String = "" //questions
+    @Published var correct_answer: String = ""//correctanswer
+    @Published var incorrect_answers_1 : String = "" //incorrectanswer1
+    @Published var incorrect_answers_2 : String = "" //incorrectanswer2
+    @Published var incorrect_answers_3 : String = ""//incorrectanswer3
     
     var data: [String: Any]{
         return[     

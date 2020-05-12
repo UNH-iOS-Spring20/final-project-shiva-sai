@@ -6,7 +6,7 @@
 //  Copyright © 2020 Shiva Kommareddy. All rights reserved.
 //
 
-class Level{
+/*class Level{
     var qanda = [QuestionandAnswer]()
     var results  = 0
     var numOfQuestions = 0
@@ -23,5 +23,5 @@ class Level{
     func getResults() -> Int {
         return results;
     }
-}
+}*/
 

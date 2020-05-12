@@ -23,7 +23,7 @@ struct LocalNotificationView: View {
                     withAnimation {
                         self.showFootnote.toggle()
                         //Message to display in the notification shade
-                        self.notificationManager.sendNotification(title: "We Miss You!", subtitle: nil, body: "Hey we are missing you,its been long time we saw you, come let's play!", launchIn: 60)
+                        self.notificationManager.sendNotification(title: "We Miss You!", subtitle: nil, body: "Hey we are missing you,its been long time we saw you, come let's play!", launchIn: 10)
                     }
                 }) {
                     Toggle(isOn: $showFootnote) {

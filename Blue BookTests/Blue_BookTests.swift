@@ -19,15 +19,72 @@ class Blue_BookTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
     //To check if question object is not null.
-    func testQuestionandAnswerInitSucceds(){
-        let firstQuestionandAnswer = QuestionandAnswer.init( "What is Capital of Connecticut?", "Hartford")
-    XCTAssertNotNil(firstQuestionandAnswer)
-        let secondQuestionandAnswer = QuestionandAnswer.init("what is the sum of 11+24?",  "35")
-        XCTAssertNotNil(secondQuestionandAnswer)
-        
-    }
+  
     //To check if question object is null.
+    func testQuestionandAnswerInitSuccess(){
+        let questions =  RootModel.init(id :"001",
+            data: [
+            "category":"Entertainment",
+            "correct_answer":"2011",
+            "difficulty" :"Easy",
+            "incorrect_answers_1":"2009",
+            "incorrect_answers_2":"2010",
+            "incorrect_answers_3":"2012",
+            "question": "What year did Game of Thrones start?"
+    ]
+    )
+    XCTAssertNotNil(questions)
+    }
+    
+   func testUsersinitSuccess(){
+       let userdata = User.init(id :"001",
+           data: [
+           "email":"sk8@gmail.com",
+            "firstname":"shiva",
+            "lastname" :"kommareddy",
+            "password" :"123456"
+   ]
+   )
+   XCTAssertNotNil(userdata)
+    }
+    
     func testQuestionandAnswerInitFailure(){
+        let questions =  RootModel.init(id :"001",
+            data: [
+            "category":"Entertainment",
+            "correct_answer":"2011",
+            "incorrect_answers_1":"2009",
+            "incorrect_answers_2":"2010",
+            "incorrect_answers_3":"2012",
+            "question": "What year did Game of Thrones start?"
+    ]
+    )
+    XCTAssertNil(questions)
+}
+    func testUsersinitFailure(){
+        let userdata = User.init(id :"001",
+            data: [
+             "firstname":"shiva",
+             "lastname" :"kommareddy",
+             "password" :"123456"
+    ]
+    )
+    XCTAssertNil(userdata)
+     }
+    
+   
+    func testPerformanceExample() {
+        // This is an example of a performance test case.
+        self.measure {
+            // Put the code you want to measure the time of here.
+        }
+    }
+
+}
+
+
+ /*
+ func testQuestionandAnswerInitFailure(){
         let  firstQuestionandAnswer = QuestionandAnswer.init( "What is Capital of Connecticut?", "" )
         XCTAssertNil(firstQuestionandAnswer)
     }
@@ -60,11 +117,4 @@ class Blue_BookTests: XCTestCase {
         itemList.getCorrect(answer: "Hartford", questionNumber: 4)
         XCTAssertEqual(4, itemList.getResults() )
     }
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
-    }
-
-}
+ */

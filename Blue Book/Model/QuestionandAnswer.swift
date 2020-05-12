@@ -5,7 +5,7 @@
 //  Created by Shiva Kommareddy on 2/19/20.
 //  Copyright © 2020 Shiva Kommareddy. All rights reserved.
 //
-class QuestionandAnswer{
+/*class QuestionandAnswer{
     var question:String
     var answer: String
     init?(_ question: String,_ answer: String){
@@ -14,8 +14,6 @@ class QuestionandAnswer{
         }
         self.question = question
         self.answer = answer
-        
-        
     }
-    
 }
+*/

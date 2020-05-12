@@ -68,6 +68,7 @@ struct AddQuestion: View {
         let incorrect_answers_2 : String = $incorrect_answers_2.wrappedValue
         let incorrect_answers_3: String = $incorrect_answers_3.wrappedValue
         // Logic to add  question
+        
         let data = ["category": category, "difficulty": difficulty, "question": question, "correct_answer": correct_answer, "incorrect_answers_1" : incorrect_answers_1, "incorrect_answers_2" : incorrect_answers_2, "incorrect_answers_3" : incorrect_answers_3] as [String: Any]
         questionCollection.addDocument(data: data)
         self.category = ""
@@ -79,6 +80,7 @@ struct AddQuestion: View {
         self.incorrect_answers_3 = ""
     }
 }
+
 
 struct AddQuestion_Previews: PreviewProvider {
     static var previews: some View {
